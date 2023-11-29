@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD Candidate</title>
+    <style>
+        input{
+            margin-left: 20px;
+
+        }
+        div {
+            text-align: right;
+            margin: 15px;
+        }
+        label, select {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div style="align-items: center; margin: 50px">
+    <div style="border: 1px solid black; background: beige; width: 350px; height: 300px; padding: 20px">
+        <h1 style="text-align: center">ADD Candadite</h1>
+        <form th:action="@{/candidates/add}" th:object="${candidateAdd}" method="post">
+            <div style="margin: 15px">
+                <label>Name:</label>
+                <input placeholder="Nhập tên" th:field="*{fullName}">
+            </div>
+            <div style="margin: 15px">
+                <label >Dob:</label>
+                <input style="margin-left: 20px; width: 165px" type="date" th:field="*{dob}">
+            </div>
+            <div style="margin: 15px">
+                <label>Email:</label>
+                <input placeholder="Nhập email" th:field="*{email}">
+            </div>
+            <div style="margin: 15px">
+                <label>Phone:</label>
+                <input placeholder="Nhập phone" th:field="*{phone}">
+            </div>
+            <div style="margin: 15px">
+                <label style="margin-right: 20px" for="selectAdress">Status:</label>
+                <select th:field="*{address}" id="selectAdress" style="width: 170px" >
+                    <option th:each="address: ${addressList}"
+                            th:value="${address.id}" th:text="${address.city}"></option>
+                </select>
+            </div>
+
+            <button type="submit" style="margin-right: 100px; width: 80px; background: aqua">ADD</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
